@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ισονομία — Gestione Utenti e Permessi</title>
+  <link rel="stylesheet" href="/utenti/crea_modifica_utente.css">
+</head>
+<body>
+  <a href="#main-utenti" class="skip-link">Vai alla gestione utenti</a>
+
+  <header class="topbar">
+    <a href="/dashboard" class="brand">
+      <span class="brand-emblem" aria-hidden="true">Ισ</span>
+      <div>
+        <span class="brand-title">Ισονομία</span>
+        <span class="brand-subtitle">Gestione Anagrafica &amp; Gerarchia Livelli</span>
+      </div>
+    </a>
+
+    <nav class="nav-links" aria-label="Navigazione principale">
+      <a href="/dashboard" class="nav-btn">Dashboard</a>
+      <a href="/votazioni" class="nav-btn">Votazioni &amp; Presenze</a>
+      <a href="/utenti" class="nav-btn active">Gestione Utenti</a>
+      <a href="/profilo" class="nav-btn">Profilo Personale</a>
+      <button type="button" id="btn-logout" class="nav-btn nav-btn-logout">Esci</button>
+    </nav>
+  </header>
+
+  <main id="main-utenti" class="container">
+    <section class="card" aria-labelledby="form-utente-heading">
+      <div class="card-header">
+        <div>
+          <h1 id="form-utente-heading" class="card-title">Crea o Modifica Account Utente</h1>
+          <p id="role-limit-desc" class="card-desc">Configurazione anagrafica e assegnazione livello gerarchico</p>
+        </div>
+        <button type="button" id="btn-reset-form" class="btn btn-secondary hidden">Annulla Modifica (Nuovo Utente)</button>
+      </div>
+
+      <div id="utente-alert" class="alert" role="alert" aria-live="assertive"></div>
+
+      <form id="utente-form" novalidate>
+        <input type="hidden" id="edit-mode-id" value="">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nome">Nome *</label>
+            <input type="text" id="nome" required placeholder="Es. Marco">
+          </div>
+
+          <div class="form-group">
+            <label for="cognome">Cognome *</label>
+            <input type="text" id="cognome" required placeholder="Es. Rossi">
+          </div>
+
+          <div class="form-group">
+            <label for="codice_fiscale">ID (Codice Fiscale) *</label>
+            <input type="text" id="codice_fiscale" class="mono" style="text-transform: uppercase;" required placeholder="16 caratteri alfanumerici">
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username (nome.cognome) *</label>
+            <input type="text" id="username" required placeholder="marco.rossi">
+            <span class="form-hint">Generato automaticamente da nome.cognome con gestione univoca omonimia.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="livello">Livello Account (1–5) *</label>
+            <select id="livello" required></select>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password <span id="pwd-req-label">*</span></label>
+            <input type="password" id="password" placeholder="Min. 12 caratteri, 1 Maiusc, 1 minusc, 1 speciale">
+            <span class="form-hint">Almeno 12 caratteri, 1 maiuscola, 1 minuscola e 1 carattere speciale.</span>
+          </div>
+        </div>
+
+        <button type="submit" id="btn-salva-utente" class="btn btn-primary">Salva Account Utente</button>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="lista-utenti-heading">
+      <div class="card-header">
+        <div>
+          <h2 id="lista-utenti-heading" class="card-title">Registro Utenti e Statistiche Partecipazione</h2>
+          <p class="card-desc">Dati cifrati su server (presenze, assenze e percentuali calcolate automaticamente)</p>
+        </div>
+      </div>
+
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>Nome e Cognome</th>
+              <th>ID (Cod. Fiscale)</th>
+              <th>Username</th>
+              <th>Livello</th>
+              <th>Presenze</th>
+              <th>Assenze</th>
+              <th>% Presenze</th>
+              <th>% Assenze</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody id="utenti-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="/utenti/crea_modifica_utente.js"></script>
+</body>
+</html>

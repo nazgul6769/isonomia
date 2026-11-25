@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ισονομία (Isonomia) — Autenticazione Sovrana Zero-Trust</title>
+  <link rel="stylesheet" href="/login/login.css">
+</head>
+<body>
+  <a href="#main-login" class="skip-link">Vai al modulo di autenticazione</a>
+
+  <main id="main-login" class="login-wrapper">
+    <section class="card login-card" aria-labelledby="login-heading">
+      <div class="card-header" style="justify-content: center; text-align: center; flex-direction: column;">
+        <div class="brand-emblem" aria-hidden="true">Ισ</div>
+        <h1 id="login-heading" class="card-title" style="margin-top: 10px;">Ισονομία — Accesso Sovrano</h1>
+        <p class="card-desc">Autenticazione Zero-Trust con verifica combinata di Username, ID (Codice Fiscale) e Password</p>
+      </div>
+
+      <div id="login-alert" class="alert alert-error" role="alert" aria-live="assertive"></div>
+
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" autocomplete="username" placeholder="nome.cognome" required aria-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="codice_fiscale">ID (Codice Fiscale)</label>
+          <input type="text" id="codice_fiscale" name="id" class="mono" style="text-transform: uppercase;" placeholder="ES. PRVDVD05A27M052R" required aria-required="true">
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" autocomplete="current-password" placeholder="Inserisci la tua password" required aria-required="true">
+        </div>
+
+        <button type="submit" id="btn-conferma" class="btn btn-primary btn-block">Conferma</button>
+      </form>
+
+      <div style="margin-top: 20px; text-align: center; font-size: 0.82rem; color: var(--text-secondary);">
+        <span class="badge badge-cyan">TLS/HTTPS Attivo</span>
+        <span class="badge badge-gold">ZKP &amp; E2E-V</span>
+        <p style="margin-top: 10px;">Conforme a ISO/IEC 27001, SOC 2 Type II, GDPR e WCAG 2.1 AAA</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/login/login.js"></script>
+</body>
+</html>

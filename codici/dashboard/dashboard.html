@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ισονομία — Dashboard Principale</title>
+  <link rel="stylesheet" href="/dashboard/dashboard.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Vai al contenuto principale</a>
+
+  <header class="topbar">
+    <a href="/dashboard" class="brand">
+      <span class="brand-emblem" aria-hidden="true">Ισ</span>
+      <div>
+        <span class="brand-title">Ισονομία</span>
+        <span class="brand-subtitle">Governance &amp; Scrutinio Crittografico</span>
+      </div>
+    </a>
+
+    <nav class="nav-links" aria-label="Navigazione principale">
+      <a href="/dashboard" class="nav-btn active">Dashboard</a>
+      <a href="/votazioni" id="nav-votazioni" class="nav-btn">Votazioni &amp; Presenze</a>
+      <a href="/utenti" id="nav-utenti" class="nav-btn hidden">Gestione Utenti</a>
+      <a href="/profilo" class="nav-btn">Profilo Personale</a>
+      <button type="button" id="btn-logout" class="nav-btn nav-btn-logout">Esci</button>
+    </nav>
+  </header>
+
+  <main id="main-content" class="container">
+    <section class="card" aria-labelledby="welcome-heading">
+      <div class="card-header">
+        <div>
+          <h1 id="welcome-heading" class="card-title">Benvenuto in Ισονομία</h1>
+          <p id="user-subtitle" class="card-desc">Caricamento profilo crittografico...</p>
+        </div>
+        <span id="user-level-badge" class="badge badge-gold">Livello --</span>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-box">
+          <div class="kpi-label">Presenze Registrate</div>
+          <div id="kpi-presenze" class="kpi-value">0</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Assenze Registrate</div>
+          <div id="kpi-assenze" class="kpi-value">0</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Totale Convocazioni</div>
+          <div id="kpi-totale" class="kpi-value">0</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Tasso di Presenza</div>
+          <div id="kpi-perc" class="kpi-value">0%</div>
+        </div>
+      </div>
+
+      <div class="form-grid" id="action-cards">
+        <div class="card" style="margin-bottom: 0; background-color: var(--bg-secondary);">
+          <h2 class="card-title" style="font-size: 1.15rem;">Votazioni e Scrutinio E2E-V</h2>
+          <p class="card-desc">Partecipa alle votazioni consentite dal tuo livello, esprimi il voto cifrato e consulta i risultati.</p>
+          <div style="margin-top: 16px;">
+            <a href="/votazioni" class="btn btn-primary">Apri Area Votazioni</a>
+          </div>
+        </div>
+
+        <div id="card-gestione-utenti" class="card hidden" style="margin-bottom: 0; background-color: var(--bg-secondary);">
+          <h2 class="card-title" style="font-size: 1.15rem;">Anagrafica &amp; Permessi Utenti</h2>
+          <p class="card-desc">Crea e gestisci account nel rispetto della gerarchia dei livelli (1–5) e dei vincoli di sicurezza.</p>
+          <div style="margin-top: 16px;">
+            <a href="/utenti" class="btn btn-secondary">Gestisci Utenti</a>
+          </div>
+        </div>
+
+        <div class="card" style="margin-bottom: 0; background-color: var(--bg-secondary);">
+          <h2 class="card-title" style="font-size: 1.15rem;">Identità Sovrana &amp; Sicurezza</h2>
+          <p class="card-desc">Visualizza i tuoi dati anagrafici, statistiche di partecipazione e aggiorna la tua password.</p>
+          <div style="margin-top: 16px;">
+            <a href="/profilo" class="btn btn-secondary">Vai al Profilo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="audit-section" class="card hidden" aria-labelledby="audit-heading">
+      <div class="card-header">
+        <div>
+          <h2 id="audit-heading" class="card-title">Registro Distribuito Immutabile (Audit Ledger)</h2>
+          <p class="card-desc">Catena crittografica SHA-256 degli eventi di sistema con commitment ZKP anonimizzati</p>
+        </div>
+        <span class="badge badge-green">Integrità Verificata</span>
+      </div>
+      <div class="table-responsive">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Timestamp UTC</th>
+              <th>Azione</th>
+              <th>Commitment Attore (ZKP)</th>
+              <th>Hash Blocco</th>
+            </tr>
+          </thead>
+          <tbody id="audit-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    Ισονομία — Infrastruttura Zero-Trust, Cifratura a Riposo AES-256/Fernet e Verificabilità End-to-End (WCAG 2.1 AAA)
+  </footer>
+
+  <script src="/dashboard/dashboard.js"></script>
+</body>
+</html>

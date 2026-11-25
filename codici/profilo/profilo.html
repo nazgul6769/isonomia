@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ισονομία — Profilo Personale</title>
+  <link rel="stylesheet" href="/profilo/profilo.css">
+</head>
+<body>
+  <a href="#main-profilo" class="skip-link">Vai al profilo personale</a>
+
+  <header class="topbar">
+    <a href="/dashboard" class="brand">
+      <span class="brand-emblem" aria-hidden="true">Ισ</span>
+      <div>
+        <span class="brand-title">Ισονομία</span>
+        <span class="brand-subtitle">Identità Sovrana &amp; Sicurezza Account</span>
+      </div>
+    </a>
+
+    <nav class="nav-links" aria-label="Navigazione principale">
+      <a href="/dashboard" class="nav-btn">Dashboard</a>
+      <a href="/votazioni" class="nav-btn">Votazioni &amp; Presenze</a>
+      <a href="/utenti" id="nav-utenti" class="nav-btn hidden">Gestione Utenti</a>
+      <a href="/profilo" class="nav-btn active">Profilo Personale</a>
+      <button type="button" id="btn-logout" class="nav-btn nav-btn-logout">Esci</button>
+    </nav>
+  </header>
+
+  <main id="main-profilo" class="container">
+    <section class="card" aria-labelledby="profilo-heading">
+      <div class="card-header">
+        <div>
+          <h1 id="profilo-heading" class="card-title">Dati Identità Digitale</h1>
+          <p class="card-desc">Informazioni anagrafiche e statistiche ufficiali di partecipazione alle votazioni</p>
+        </div>
+        <span id="profilo-livello-badge" class="badge badge-gold">Livello --</span>
+      </div>
+
+      <div class="form-grid">
+        <div class="kpi-box">
+          <div class="kpi-label">Nome e Cognome</div>
+          <div id="prof-nome-cognome" class="kpi-value" style="font-size: 1.3rem;">--</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">ID (Codice Fiscale)</div>
+          <div id="prof-id" class="kpi-value" style="font-size: 1.3rem;">--</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Username</div>
+          <div id="prof-username" class="kpi-value" style="font-size: 1.3rem;">--</div>
+        </div>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-box">
+          <div class="kpi-label">Presenze</div>
+          <div id="prof-presenze" class="kpi-value">0</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Assenze</div>
+          <div id="prof-assenze" class="kpi-value">0</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">Totale Richieste</div>
+          <div id="prof-totale" class="kpi-value">0</div>
+        </div>
+        <div class="kpi-box">
+          <div class="kpi-label">% Presenze / % Assenze</div>
+          <div id="prof-percentuali" class="kpi-value" style="font-size: 1.35rem;">0% / 0%</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="pwd-heading">
+      <div class="card-header">
+        <div>
+          <h2 id="pwd-heading" class="card-title">Modifica Password Personale</h2>
+          <p class="card-desc">Requisiti obbligatori: minimo 12 caratteri, almeno 1 maiuscola, 1 minuscola e 1 carattere speciale</p>
+        </div>
+      </div>
+
+      <div id="profilo-alert" class="alert" role="alert" aria-live="assertive"></div>
+
+      <form id="password-form" novalidate style="max-width: 540px;">
+        <div class="form-group">
+          <label for="old-password">Password Attuale *</label>
+          <input type="password" id="old-password" required>
+        </div>
+
+        <div class="form-group">
+          <label for="new-password">Nuova Password *</label>
+          <input type="password" id="new-password" required>
+        </div>
+
+        <div class="form-group">
+          <label for="confirm-password">Conferma Nuova Password *</label>
+          <input type="password" id="confirm-password" required>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Aggiorna Password</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="/profilo/profilo.js"></script>
+</body>
+</html>

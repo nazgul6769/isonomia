@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ισονομία — Gestione Votazioni e Presenze</title>
+  <link rel="stylesheet" href="/votazioni/gestione_votazioni.css">
+</head>
+<body>
+  <a href="#main-votazioni" class="skip-link">Vai alle votazioni</a>
+
+  <header class="topbar">
+    <a href="/dashboard" class="brand">
+      <span class="brand-emblem" aria-hidden="true">Ισ</span>
+      <div>
+        <span class="brand-title">Ισονομία</span>
+        <span class="brand-subtitle">Scrutinio E2E-V &amp; Registro Presenze</span>
+      </div>
+    </a>
+
+    <nav class="nav-links" aria-label="Navigazione principale">
+      <a href="/dashboard" class="nav-btn">Dashboard</a>
+      <a href="/votazioni" class="nav-btn active">Votazioni &amp; Presenze</a>
+      <a href="/utenti" id="nav-utenti" class="nav-btn hidden">Gestione Utenti</a>
+      <a href="/profilo" class="nav-btn">Profilo Personale</a>
+      <button type="button" id="btn-logout" class="nav-btn nav-btn-logout">Esci</button>
+    </nav>
+  </header>
+
+  <main id="main-votazioni" class="container">
+    <div id="votazioni-alert" class="alert" role="alert" aria-live="assertive"></div>
+
+    <!-- Sezione Creazione/Modifica Votazione (Visibile a Livelli 1, 2, 3) -->
+    <section id="create-votazione-card" class="card hidden" aria-labelledby="vot-form-heading">
+      <div class="card-header">
+        <div>
+          <h1 id="vot-form-heading" class="card-title">Crea o Modifica Votazione</h1>
+          <p class="card-desc">Configura titolo, descrizione, livello (1–3), password della votazione e registro presenze/assenze</p>
+        </div>
+        <button type="button" id="btn-cancel-edit-vot" class="btn btn-secondary hidden">Nuova Votazione</button>
+      </div>
+
+      <form id="votazione-form" novalidate>
+        <input type="hidden" id="edit-vot-id" value="">
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="vot-titolo">Titolo Votazione *</label>
+            <input type="text" id="vot-titolo" required placeholder="Es. Delibera Assembleare n. 1">
+          </div>
+
+          <div class="form-group">
+            <label for="vot-livello">Livello Votazione *</label>
+            <select id="vot-livello" required></select>
+          </div>
+
+          <div class="form-group">
+            <label for="vot-password">Password di Accesso/Conferma Votazione <span id="vot-pwd-hint">*</span></label>
+            <input type="password" id="vot-password" placeholder="Password specifica della votazione">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="vot-descrizione">Descrizione / Ordine del Giorno *</label>
+          <textarea id="vot-descrizione" required placeholder="Descrizione dettagliata del quesito o della delibera..."></textarea>
+        </div>
+
+        <!-- Selezione e aggiunta partecipanti -->
+        <div class="card" style="background-color: var(--bg-secondary); margin-bottom: 18px;">
+          <h2 class="card-title" style="font-size: 1.1rem; margin-bottom: 12px;">Elenco Partecipanti e Registro Presenze</h2>
+
+          <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; margin-bottom: 16px;">
+            <div style="flex: 1; min-width: 260px;">
+              <label for="select-persona">Seleziona Persona dall'Anagrafica</label>
+              <select id="select-persona">
+                <option value="">-- Seleziona un utente registrato --</option>
+              </select>
+            </div>
+            <button type="button" id="btn-aggiungi-persona" class="btn btn-secondary">+ Aggiungi Persona</button>
+          </div>
+
+          <div class="table-responsive">
+            <table>
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Cognome</th>
+                  <th>Cod. Fiscale</th>
+                  <th>Presenza (Cliccato = Presente)</th>
+                  <th>Azione</th>
+                </tr>
+              </thead>
+              <tbody id="partecipanti-form-tbody"></tbody>
+            </table>
+          </div>
+          <p id="live-stats-preview" class="form-hint" style="margin-top: 10px; font-weight: 600;">
+            Presenti: 0 | Assenti: 0 | Percentuale Presenze: 0%
+          </p>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salva Votazione e Aggiorna Statistiche</button>
+      </form>
+    </section>
+
+    <!-- Elenco Votazioni Attive e Scrutinio -->
+    <section class="card" aria-labelledby="elenco-vot-heading">
+      <div class="card-header">
+        <div>
+          <h2 id="elenco-vot-heading" class="card-title">Votazioni Disponibili e Registro Scrutinio</h2>
+          <p class="card-desc">Le votazioni visualizzate sono filtrate in base al tuo livello gerarchico e alle convocazioni</p>
+        </div>
+      </div>
+
+      <div id="votazioni-list"></div>
+    </section>
+  </main>
+
+  <script src="/votazioni/gestione_votazioni.js"></script>
+</body>
+</html>
